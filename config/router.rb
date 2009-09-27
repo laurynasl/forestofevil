@@ -28,6 +28,7 @@
 Merb.logger.info("Compiling routes...")
 Merb::Router.prepare do
   match('/').to(:controller => 'welcome', :action =>'index').name(:welcome)
+  match('/resource_urls').to(:controller => 'welcome', :action =>'resource_urls').name(:resource_urls)
   match('/register').to(:controller => 'users', :action => 'new').name(:register)
   slice(:merb_auth_slice_password, :name_prefix => nil, :path_prefix => "")
   resources :users do

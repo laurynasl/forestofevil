@@ -1,0 +1,23 @@
+<h1>Klano narių resursų nuorodos</h1>
+
+<script type='text/javascript'>
+  //<![CDATA[
+
+function openResourceUrls() {
+  <% @ingame_ids.each do |ingame_id| %>
+      window.open('http://riteriai.draugas.lt/?recruit=6H<%= ingame_id %>');
+  <% end %>
+}
+    
+  //]]>
+</script>
+
+<fieldset>
+  <legend>Atverti visas</legend>
+  <p>Įspėjame! Bus atverti <%= @ingame_ids.size %> nauji langai/tabai.</p>
+  <button onclick="openResourceUrls();">Atverti</button>
+</fieldset>
+
+<% @ingame_ids.each do |ingame_id| %>
+    <a href="http://riteriai.draugas.lt/?recruit=6H<%= ingame_id %>" target="_blank" ><img src="http://riteriai6.draugas.lt/signatures/lt/world_6/<%= ingame_id %>.jpg" alt="" /></a>
+<% end %>

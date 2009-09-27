@@ -7,3 +7,13 @@ scenario :laurynas do
     :password_confirmation => '123456'
   )
 end
+
+scenario :fiodor do
+  @fiodor = User.create(
+    :email => 'fiodor.veresciaka@gmail.com',
+    :login => 'fiodor',
+    :password => '123456',
+    :password_confirmation => '123456',
+    :ingame_id => '1234'
+  )
+end
