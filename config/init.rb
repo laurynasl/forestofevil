@@ -3,6 +3,23 @@
 # Specify a specific version of a dependency
 # dependency "RedCloth", "> 3.0"
 dependency 'laurynasl-hornsby'
+dependency "merb-helpers"
+dependency "merb-mailer"
+dependency "merb-slices"
+dependency "merb-auth-core"
+dependency "merb-auth-more"
+dependency "merb-auth-slice-password"
+dependency "merb-param-protection"
+dependency "merb-exceptions"
+
+
+require 'lib/sequel-ext/timestamps'
+require 'lib/nil'
+require 'lib/dec'
+require 'lib/invoke'
+require 'lib/date'
+require 'lib/time'
+require 'lib/string'
 
 use_orm :sequel
 use_test :rspec
@@ -19,6 +36,10 @@ end
  
 Merb::BootLoader.before_app_loads do
   # This will get executed after dependencies have been loaded but before your app's classes have loaded.
+  require 'sequel/extensions/inflector'
+  require 'sequel/extensions/pagination'
+  Sequel::Model.plugin :validation_class_methods
+  Sequel::Model.plugin :hook_class_methods
 end
  
 Merb::BootLoader.after_app_loads do

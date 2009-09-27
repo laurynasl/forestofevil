@@ -29,6 +29,8 @@ require 'merb-core/test/tasks/spectasks'
 desc 'Default: run spec examples'
 task :default => 'spec'
 
+require 'sequel/extensions/migration'
+
 ##############################################################################
 # ADD YOUR CUSTOM TASKS IN /lib/tasks
 # NAME YOUR RAKE FILES file_name.rake
