@@ -6,7 +6,17 @@
     <link rel="stylesheet" href="/stylesheets/application.css" type="text/css" media="screen" charset="utf-8" />
   </head>
   <body>
-    <%#= message[:notice] %>
+    <ul>
+      <li><%= link_to 'Pradinis puslapis', url(:welcome) %></li>
+      <% if current_user %>
+        <li><%= link_to h(current_user.login), resource(current_user) %></li>
+        <li><%= link_to 'Atsijungti', url(:logout) %></li>
+      <% else %>
+        <li><%= link_to 'Registruotis', url(:register) %></li>
+        <li><%= link_to 'Prisijungti', url(:login) %></li>
+      <% end %>
+    </ul>
+    <%= message[:notice] %>
     <%= catch_content :for_layout %>
   </body>
 </html>

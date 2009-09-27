@@ -1,4 +1,5 @@
-<%= fixed_form_for(User.new) do %>
+<%= error_messages_for @user %>
+<%= fixed_form_for(@user || User.new) do %>
   <table>
     <tr>
       <td>El. paštas</td>

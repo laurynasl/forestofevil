@@ -32,6 +32,15 @@ describe Users, "CREATE" do
     user.should_not be_nil
     response.should redirect_to(resource(user))
   end
+
+  it "should fail validation" do
+    hornsby_scenario
+    response = post(url(:users, :format => 'html'), :user => {
+      :login => 'laurynasl', 
+    })
+    user = response.assigns(:user)
+    response.should be_successful
+  end
 end
 
 describe Users, "SHOW" do

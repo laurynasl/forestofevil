@@ -6,8 +6,12 @@ class Users < Application
 
   def create
     @user = User.new(params[:user])
-    @user.save
-    redirect resource(@user)
+    if @user.valid?
+      @user.save
+      redirect resource(@user)
+    else
+      render :new
+    end
   end
 
   def show

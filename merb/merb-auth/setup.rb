@@ -21,11 +21,11 @@ begin
   class Merb::Authentication
 
     def fetch_user(session_user_id)
-      Merb::Authentication.user_class.get(session_user_id)
+      Merb::Authentication.user_class.first(:id => session_user_id)
     end
 
     def store_user(user)
-      user.nil? ? user : user.id
+      user.id
     end
   end
   
