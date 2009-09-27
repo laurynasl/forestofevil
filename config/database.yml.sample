@@ -1,0 +1,14 @@
+---
+:development: &defaults
+  :adapter: postgres
+  :database: forestofevil_development
+  :username: postgres
+  :password: secret
+
+:test:
+  <<: *defaults
+  :database: forestofevil_test
+
+:production:
+  <<: *defaults
+  :database: forestofevil_production
