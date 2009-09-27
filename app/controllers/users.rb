@@ -18,5 +18,10 @@ class Users < Application
     @user = User[params[:id]]
     render
   end
+
+  def change_ingame_id
+    current_user.change_ingame_id params[:ingame_id]
+    redirect resource(current_user)
+  end
   
 end

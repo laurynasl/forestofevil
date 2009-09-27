@@ -30,5 +30,7 @@ Merb::Router.prepare do
   match('/').to(:controller => 'welcome', :action =>'index').name(:welcome)
   match('/register').to(:controller => 'users', :action => 'new').name(:register)
   slice(:merb_auth_slice_password, :name_prefix => nil, :path_prefix => "")
-  resources :users
+  resources :users do
+    collection :change_ingame_id
+  end
 end

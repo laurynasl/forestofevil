@@ -1,3 +1,28 @@
 <%= link_to h(@user.login), resource(@user), :style => 'font-size: 23px; color: #559;' %>
 
 <p>Vartotojas nuo: <%= datetime @user.created_at %></p>
+
+<fieldset>
+  <legend>Resursų nuoroda</legend>
+  <% if @user.ingame_id %>
+    <a href="http://riteriai.draugas.lt/?recruit=6H<%= @user.ingame_id %>" target="_blank" ><img src="http://riteriai6.draugas.lt/signatures/lt/world_6/<%= @user.ingame_id %>.jpg" alt="" /></a>
+
+  <% else %>
+
+
+    <% if current_user && current_user.id == @user.id %>
+      <p>Jūs neišsaugojote resursų nuorodos</p>
+    <% else %>
+      <p>Vartotojas resursų nuorodos neišsaugojo</p>
+    <% end %>
+
+  <% end %>
+
+  <% if current_user && current_user.id == @user.id %>
+    <p>Galite pakeisti savo resursų nuorodą. Drąsiai perkopijuokite savo nuorodą bet kokia forma. Ji bus atpažinta :)</p>
+    <%= form :action => url(:change_ingame_id_users) do %>
+      <%= text_area :name => :ingame_id, :style => 'width: 500px; height: 100px;' %>
+      <%= submit 'Išsaugoti' %>
+    <% end =%>
+  <% end %>
+</fieldset>

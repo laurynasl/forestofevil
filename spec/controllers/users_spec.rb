@@ -8,6 +8,12 @@ describe Users, "routes" do
       :controller => "users",
       :action => "new"
     }
+
+    request_to('/users/change_ingame_id').should == {
+      :controller => 'users',
+      :action => 'change_ingame_id',
+      :format => nil
+    }
   end
 end
 
@@ -49,5 +55,15 @@ describe Users, "SHOW" do
     response = get(resource(@laurynas, :format => 'html'))
     response.should be_successful
     response.assigns(:user).should == @laurynas
+  end
+end
+
+describe Users, "change_ingame_id" do
+  it "should change ingame id and redirect to show" do
+    hornsby_scenario :laurynas
+    response = laurynas_post(url(:change_ingame_id_users), :ingame_id => '<a href = "http://riteriai.draugas.lt/?recruit=6H2069" ><img src= "http://riteriai6.draugas.lt/signatures/lt/world_6/2069.jpg" alt="" /></a>')
+    response.should redirect_to(resource(@laurynas))
+    @laurynas.reload
+    @laurynas.ingame_id.should == 2069
   end
 end

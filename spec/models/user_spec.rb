@@ -19,3 +19,17 @@ describe User do
   it_should_have_timestamps :@laurynas
 
 end
+
+describe User, "change_ingame_id" do
+  it "should simply set it, because it is a number" do
+    hornsby_scenario :laurynas
+    @laurynas.change_ingame_id('2069')
+    @laurynas.ingame_id.should == 2069
+  end
+
+  it "should recognize it from recruit url" do
+    hornsby_scenario :laurynas
+    @laurynas.change_ingame_id('http://riteriai.draugas.lt/?recruit=6H2069')
+    @laurynas.ingame_id.should == 2069
+  end
+end

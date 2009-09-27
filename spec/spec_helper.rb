@@ -27,4 +27,15 @@ end
 require 'rspec_merb_helpers'
 include RSpecMerbHelpers
 
+def authenticated_request(login, method, url, parameters, &block)
+  response = send(method, url, parameters) do |c|
+    user = User.first(:login => login) || raise('user not found')
+    c.session.stub!(:user).and_return(user)
+    #c.session.user = user.id
+    c.stub!(:ensure_authenticated).and_return(true) 
+    block.call(c) if block
+  end
+  response
+end
+
 create_authenticated_requests [['laurynas', 'kudlius'], ['fiodor', 'fiodor'], ['root', 'root']]
