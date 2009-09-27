@@ -1,4 +1,6 @@
 require "rubygems"
+require 'merb-core'
+require 'spec' # Satisfies Autotest and anyone else not using the Rake tasks
 
 # Add the local gems dir if found within the app root; any dependencies loaded
 # hereafter will try to load from the local gems before loading system gems.
@@ -13,8 +15,16 @@ require "spec" # Satisfies Autotest and anyone else not using the Rake tasks
 # here again, Merb will do it for you
 Merb.start_environment(:testing => true, :adapter => 'runner', :environment => ENV['MERB_ENV'] || 'test')
 
+Hornsby.load
+
 Spec::Runner.configure do |config|
-  config.include(Merb::Test::ViewHelper)
+  #config.include(Merb::Test::ViewHelper)
   config.include(Merb::Test::RouteHelper)
   config.include(Merb::Test::ControllerHelper)
+  config.include(HornsbySpecHelper)
 end
+
+require 'rspec_merb_helpers'
+include RSpecMerbHelpers
+
+create_authenticated_requests [['laurynas', 'kudlius'], ['fiodor', 'fiodor'], ['root', 'root']]

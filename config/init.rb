@@ -2,8 +2,9 @@
  
 # Specify a specific version of a dependency
 # dependency "RedCloth", "> 3.0"
+dependency 'laurynasl-hornsby'
 
- use_orm :sequel
+use_orm :sequel
 use_test :rspec
 use_template_engine :erb
  
