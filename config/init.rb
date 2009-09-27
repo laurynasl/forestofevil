@@ -3,6 +3,7 @@
 # Specify a specific version of a dependency
 # dependency "RedCloth", "> 3.0"
 dependency 'laurynasl-hornsby'
+dependency "merb-assets"
 dependency "merb-helpers"
 dependency "merb-mailer"
 dependency "merb-slices"

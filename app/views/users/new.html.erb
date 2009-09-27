@@ -1,0 +1,24 @@
+<%= fixed_form_for(User.new) do %>
+  <table>
+    <tr>
+      <td>El. paštas</td>
+      <td><%= text_field :email %></td>
+    </tr>
+    <tr>
+      <td>Slapyvardis</td>
+      <td><%= text_field :login %></td>
+    </tr>
+    <tr>
+      <td>Slaptažodis</td>
+      <td><%= password_field :password %></td>
+    </tr>
+    <tr>
+      <td>Slaptažodis (dar kartą)</td>
+      <td><%= password_field :password_confirmation %></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><%= submit 'Registruotis' %></td>
+    </tr>
+  </table>
+<% end =%>
