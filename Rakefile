@@ -33,3 +33,8 @@ task :default => 'spec'
 # ADD YOUR CUSTOM TASKS IN /lib/tasks
 # NAME YOUR RAKE FILES file_name.rake
 ##############################################################################
+
+desc 'updates server'
+task :update do
+  system "ssh space-survival.com 'echo $PATH; update forestofevil.bashquest.com'"
+end
