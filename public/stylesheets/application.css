@@ -1,3 +1,12 @@
 h1 {
   text-align: center;
 }
+
+ul.menu {
+  list-style: none;
+}
+
+ul.menu li {
+  float: left;
+  margin-left: 10px;
+}
