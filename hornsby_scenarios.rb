@@ -17,3 +17,10 @@ scenario :fiodor do
     :ingame_id => '1234'
   )
 end
+
+scenario :clan do
+  @clan = ImportedClan.create(
+    :name => 'Forest_of_Evil',
+    :count => 76
+  )
+end

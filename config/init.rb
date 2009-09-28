@@ -13,6 +13,8 @@ dependency "merb-auth-slice-password"
 dependency "merb-param-protection"
 dependency "merb-exceptions"
 
+require 'libxml'
+
 
 require 'lib/sequel-ext/timestamps'
 require 'lib/nil'
@@ -45,4 +47,5 @@ end
  
 Merb::BootLoader.after_app_loads do
   # This will get executed after your app's classes have been loaded.
+  DB = Sequel::Model.db unless self.class.const_defined?(:DB)
 end

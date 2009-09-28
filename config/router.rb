@@ -34,4 +34,5 @@ Merb::Router.prepare do
   resources :users do
     collection :change_ingame_id
   end
+  resources :imported_clans
 end

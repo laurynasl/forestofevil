@@ -1,0 +1,8 @@
+<p>Įkelkite prieš tai išsaugoto klano puslapio HTML kodą</p>
+<p>URL pavyzdys: <%= h 'http://riteriai6.draugas.lt/viewsauz.php?id=30' %> (klanas Forest_of_Evil)</p>
+
+<%= form :action => url(:imported_clans), :multipart => true do %>
+  <%= file_field :name => 'data' %>
+  <%= submit 'Įkelti' %>
+<% end =%>
+

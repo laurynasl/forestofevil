@@ -1,0 +1,18 @@
+<%= link_to 'Naujas', url(:new_imported_clan) %>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Vardas</th>
+      <th>Narių skaičius</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% ImportedClan.order(:id.desc).each do |clan| %>
+      <tr>
+        <td><%= link_to h(clan.name), resource(clan) %></td>
+        <td><%= clan.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
